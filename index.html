@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Наталья Шамаева — Product Manager · Битрикс24 · AI</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230f172a'/><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%2360a5fa'/><stop offset='100%25' stop-color='%23818cf8'/></linearGradient></defs><text x='16' y='22' text-anchor='middle' font-family='Arial,sans-serif' font-weight='800' font-size='13' fill='url(%23g)'>НШ</text></svg>">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue: #1A56DB;
+    --blue-light: #3b82f6;
+    --blue-pale: #EEF2FF;
+    --blue-mid: #C7D2FE;
+    --indigo: #4f46e5;
+    --bg: #0f172a;
+    --bg2: #1e293b;
+    --bg3: #273047;
+    --text: #f1f5f9;
+    --text2: #94a3b8;
+    --border: #334155;
+    --green: #10b981;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(15,23,42,0.9);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-name {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--text);
+  }
+
+  .nav-name span { color: var(--blue-light); }
+
+  .nav-links { display: flex; gap: 28px; }
+
+  .nav-links a {
+    font-size: 13px;
+    color: var(--text2);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--blue-light); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 80px 24px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 70% at 10% 50%, rgba(26,86,219,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 90% 30%, rgba(79,70,229,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 920px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(26,86,219,0.12);
+    border: 1px solid rgba(26,86,219,0.35);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #93c5fd;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.4rem, 5.5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    background: linear-gradient(135deg, #60a5fa 0%, #818cf8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--text2);
+    max-width: 640px;
+    margin-bottom: 12px;
+    line-height: 1.75;
+  }
+
+  .hero-highlight {
+    font-size: 1rem;
+    color: #bfdbfe;
+    max-width: 640px;
+    margin-bottom: 36px;
+    font-style: italic;
+    border-left: 3px solid var(--blue-light);
+    padding-left: 14px;
+  }
+
+  .hero-callout {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: rgba(26,86,219,0.1);
+    border: 1px solid rgba(26,86,219,0.45);
+    border-left: 3px solid var(--blue-light);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 15px;
+    color: #bfdbfe;
+    font-weight: 500;
+    max-width: 640px;
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+
+  .hero-callout-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+
+  .hero-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    background: var(--bg2);
+    color: var(--text2);
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .pill:hover { border-color: var(--blue-light); color: var(--text); }
+
+  .hero-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .chip {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 4px 12px;
+    font-size: 12px;
+    color: var(--text2);
+  }
+
+  /* SECTION BASE */
+  section { padding: 80px 24px; }
+
+  .container { max-width: 920px; margin: 0 auto; }
+
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--blue-light);
+    margin-bottom: 10px;
+  }
+
+  .section-h {
+    font-size: clamp(1.6rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 48px;
+    letter-spacing: -0.3px;
+  }
+
+  /* RESULTS */
+  .results-section { background: var(--bg2); }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .result-card {
+    background: var(--bg);
+    border: 1px solid rgba(26,86,219,0.3);
+    border-radius: 12px;
+    padding: 22px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .result-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--blue), var(--indigo));
+  }
+
+  .result-card:hover { border-color: rgba(26,86,219,0.7); transform: translateY(-2px); }
+
+  .result-icon { font-size: 1.4rem; margin-bottom: 12px; display: block; }
+
+  .result-card p { font-size: 14px; color: var(--text2); line-height: 1.6; }
+
+  /* EXPERIENCE */
+  .timeline { position: relative; padding-left: 28px; }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--blue), var(--indigo), transparent);
+  }
+
+  .timeline-item { margin-bottom: 52px; position: relative; }
+
+  .timeline-dot {
+    position: absolute;
+    left: -34px;
+    top: 6px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--blue-light);
+    box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px rgba(96,165,250,0.25);
+  }
+
+  .job-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 3px;
+  }
+
+  .job-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+
+  .job-company { font-size: 14px; color: #93c5fd; font-style: italic; }
+
+  .job-date {
+    font-size: 12px;
+    color: var(--text2);
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 8px;
+  }
+
+  .job-date.current { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.3); color: var(--green); }
+
+  .job-subsection {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 14px 0 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .job-ul { list-style: none; }
+
+  .job-ul li {
+    font-size: 14px;
+    color: var(--text2);
+    padding: 4px 0 4px 18px;
+    position: relative;
+    line-height: 1.55;
+  }
+
+  .job-ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--blue-light);
+    font-size: 11px;
+    top: 6px;
+  }
+
+  .job-note {
+    font-size: 13px;
+    color: #7dd3fc;
+    background: rgba(26,86,219,0.08);
+    border: 1px solid rgba(26,86,219,0.2);
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 10px;
+    font-style: italic;
+  }
+
+  /* AI PROJECTS */
+  .ai-section { background: var(--bg2); }
+
+  .ai-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+  }
+
+  .ai-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px;
+    transition: border-color 0.2s;
+  }
+
+  .ai-card:hover { border-color: var(--blue); }
+
+  .ai-card-icon { font-size: 1.3rem; margin-bottom: 10px; }
+
+  .ai-card p { font-size: 13px; color: var(--text2); line-height: 1.55; }
+
+  .ai-card a { color: #93c5fd; text-decoration: none; }
+  .ai-card a:hover { text-decoration: underline; }
+
+  /* SKILLS */
+  .skills-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  @media (max-width: 600px) { .skills-cols { grid-template-columns: 1fr; } }
+
+  .skill-block-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .skill-list { list-style: none; }
+
+  .skill-list li {
+    font-size: 14px;
+    color: var(--text2);
+    padding: 5px 0 5px 16px;
+    position: relative;
+  }
+
+  .skill-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  /* EDUCATION */
+  .edu-section { background: var(--bg2); }
+
+  .edu-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  @media (max-width: 620px) { .edu-cols { grid-template-columns: 1fr; } }
+
+  .edu-block {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  .edu-block-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--blue-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+
+  .edu-item { margin-bottom: 8px; font-size: 14px; color: var(--text2); }
+
+  .edu-item strong { color: var(--text); display: block; }
+
+  .cert-list { list-style: none; }
+
+  .cert-list li {
+    font-size: 13px;
+    color: var(--text2);
+    padding: 3px 0 3px 14px;
+    position: relative;
+  }
+
+  .cert-list li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--blue-light);
+    font-weight: 700;
+  }
+
+  /* CTA */
+  .cta-section { text-align: center; }
+
+  .cta-inner {
+    max-width: 560px;
+    margin: 0 auto;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 60px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-inner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 90% 60% at 50% 0%, rgba(26,86,219,0.1), transparent);
+    pointer-events: none;
+  }
+
+  .cta-inner h2 { font-size: 1.9rem; font-weight: 800; margin-bottom: 10px; }
+
+  .cta-inner p { color: var(--text2); margin-bottom: 32px; font-size: 15px; }
+
+  .cta-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.2s, transform 0.15s;
+  }
+
+  .btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  .btn-blue { background: var(--blue); color: #fff; }
+
+  .btn-outline {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text2);
+  }
+
+  .btn-outline:hover { border-color: var(--blue-light); color: var(--text); }
+
+  .btn-gh { background: var(--bg3); border: 1px solid var(--border); color: var(--text2); }
+
+  .pill { position: relative; }
+
+  .copy-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 6px;
+    padding: 2px 4px;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    color: var(--text2);
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.15s, color 0.15s, background 0.15s;
+    vertical-align: middle;
+    flex-shrink: 0;
+  }
+
+  .pill:hover .copy-btn { opacity: 1; }
+  .copy-btn:hover { color: var(--blue-light); background: rgba(96,165,250,0.1); }
+  .copy-btn.copied { color: var(--green); opacity: 1; }
+
+  .copy-toast {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: var(--bg2);
+    border: 1px solid var(--green);
+    color: var(--green);
+    font-size: 13px;
+    padding: 8px 18px;
+    border-radius: 8px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+    z-index: 9999;
+  }
+
+  .copy-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text2);
+  }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .timeline { padding-left: 0; }
+    .timeline::before { display: none; }
+    .timeline-dot { display: none; }
+    .results-grid { grid-template-columns: 1fr; }
+    .ai-grid { grid-template-columns: 1fr; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-inner { animation: fadeUp 0.65s ease both; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-name">Наталья <span>Шамаева</span></div>
+  <div class="nav-links">
+    <a href="#about">О себе</a>
+    <a href="#results">Результаты</a>
+    <a href="#experience">Опыт</a>
+    <a href="#ai">AI-проекты</a>
+    <a href="#motivation">Мотивация</a>
+    <a href="#skills">Навыки</a>
+    <a href="#education">Образование</a>
+    <a href="#contact">Контакты</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="hero-inner">
+    <div class="hero-tag">Product Manager · AI · Битрикс24</div>
+    <h1>Наталья<br><em>Шамаева</em></h1>
+    <p class="hero-desc">
+      Знаю Битрикс24 с трёх сторон: начинала с технической поддержки, где видела сотни пользовательских болей изнутри, затем как интегратор проектировала CRM-архитектуру под реальные бизнес-процессы, сейчас — разрабатываю кастомные модули и AI-агентов на платформе.
+    </p>
+    <div class="hero-callout">
+      <span class="hero-callout-icon">⚡</span>
+      <span>В Bitrix Vibecode уже нашла и зарепортила баги, предложила улучшения UX и функциональности. Увидела архитектурные ограничения. Опубликовала skill Bitrix24-vibecode для агентов, который помогает им ориентироваться в документации и правильно деплоить. Следующий шаг — не репортить ограничения, а снимать их.</span>
+    </div>
+    <p class="hero-desc">
+      Прошла полный продуктовый цикл в образовательном бизнесе: строила гипотезы, внедряла изменения, измеряла retention и конверсию — и меняла продукт через данные, не через ощущения. Полное отсутствие публичных негативных отзывов за 8 лет, а также completion rate 65–75% при среднерыночных 40–70% — результат системной работы с фидбеком, а не случайность.
+    </p>
+    <div class="hero-contacts">
+      <a href="tel:+79005727988" class="pill">📞 +7 (900) 572-79-88<button class="copy-btn" onclick="copyText(event,'+7 (900) 572-79-88')" title="Скопировать"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></a>
+      <a href="mailto:lucky-naty@yandex.ru" class="pill">✉️ lucky-naty@yandex.ru<button class="copy-btn" onclick="copyText(event,'lucky-naty@yandex.ru')" title="Скопировать"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></a>
+      <a href="https://github.com/lucky-naty" class="pill" target="_blank">⌥ github.com/lucky-naty<button class="copy-btn" onclick="copyText(event,'github.com/lucky-naty')" title="Скопировать"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></a>
+      <a href="https://t.me/shamaeva_online" class="pill" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg> @shamaeva_online<button class="copy-btn" onclick="copyText(event,'@shamaeva_online')" title="Скопировать"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></a>
+      <span class="pill">📍 Москва · Удалённо / гибрид</span>
+    </div>
+    <div class="hero-chips">
+      <span class="chip">Битрикс24 (платиновый партнёр)</span>
+      <span class="chip">AI-агенты</span>
+      <span class="chip">Vibe-coding</span>
+      <span class="chip">Product Management</span>
+      <span class="chip">Английский B2</span>
+    </div>
+  </div>
+</section>
+
+<!-- KEY RESULTS -->
+<section class="results-section" id="results">
+  <div class="container">
+    <div class="section-eyebrow">Достижения</div>
+    <h2 class="section-h">Ключевые результаты</h2>
+    <div class="results-grid">
+      <div class="result-card">
+        <span class="result-icon">🏆</span>
+        <p>Создание крупнейшего в российском сегменте образовательного продукта в своей нише — 4-летний курс</p>
+      </div>
+      <div class="result-card">
+        <span class="result-icon">📈</span>
+        <p>Completion rate первого модуля — <strong>65–75%</strong> при среднем по рынку 40–70%. Результат системной работы с фидбеком студентов.</p>
+      </div>
+      <div class="result-card">
+        <span class="result-icon">⭐</span>
+        <p>0 недовольных пользователей (студентов) — 100% положительные отзывы за всё время</p>
+      </div>
+
+      <div class="result-card">
+        <span class="result-icon">⚙️</span>
+        <p>Разработала с командой разработчиков CRM-модули, закрывающие боли РОПа — заказчики в восторге</p>
+      </div>
+      <div class="result-card">
+        <span class="result-icon">🤖</span>
+        <p>Разработка AI-платформы для детской школы с нуля: тьютор, проверка ДЗ по фото, расписание — уже высокая удовлетворённость заказчиков</p>
+      </div>
+      <div class="result-card">
+        <span class="result-icon">🔓</span>
+        <p>Open-source AI skills для Bitrix Vibecode и агента Hermes — опубликованы на GitHub</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-eyebrow">Карьера</div>
+    <h2 class="section-h">Опыт работы</h2>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="job-title">Специалист по внедрению / AI-разработчик</div>
+        <div class="job-meta">
+          <span class="job-company">Petrick Consulting — Платиновый партнёр Битрикс24</span>
+          <span class="job-date current">Сент. 2025 — сейчас</span>
+        </div>
+        <ul class="job-ul">
+          <li>Разработала приложение с кастомными роботами/активити — например, робот автоматически привязывает компанию к задаче по уже прикреплённой сделке</li>
+          <li>Разработала менеджер открытых линий: все активные линии с данными и кнопками, аналитика по операторам (скорость ответа, объём), сводный просмотр чатов с настройкой прав видимости (закрывает системное ограничение Битрикс24), переименование линий из переменных, админский доступ</li>
+          <li>Разработала модуль для коробочной версии: отчёты по воронкам и звонкам в чат с гибкими фильтрами, включая исторические срезы по новым заявкам за произвольный период</li>
+          <li>Разработала интеграции с hh.ru и Яндекс Мессенджером</li>
+          <li>Создание open-source skill для AI-агентов: <a href="https://github.com/lucky-naty/bitrix24-vibecode" style="color:#93c5fd">Bitrix Vibecode</a></li>
+          <li>Выявила незакрытую потребность заказчиков — создала новый продукт для внедрения: настройка SMTP-серверов. За несколько месяцев получила 8 заявок</li>
+          <li>Настроила AI-агента Hermes, исправила баги совместно с Claude, расширила функциональность: генерация PDF и лендингов из файлов с автоматической публикацией на GitHub Pages. <a href="https://github.com/lucky-naty/hermes-skills" style="color:#93c5fd">Skill для Hermes</a></li>
+          <li>Проектирование и настройка CRM-архитектуры: воронки, смарт-процессы, роботы, права доступа</li>
+          <li>Обучение пользователей, создание баз знаний по внедрённым решениям</li>
+        </ul>
+        <div class="job-note">Путь в Битрикс24 начала с технической поддержки — знаю платформу не только как интегратор, но и как человек, который видел сотни пользовательских проблем изнутри.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="job-title">Основатель / Product Manager</div>
+        <div class="job-meta">
+          <span class="job-company">School-cool — детская онлайн-школа</span>
+          <span class="job-date current">Июль 2025 — сейчас</span>
+        </div>
+        <ul class="job-ul">
+          <li>Custdev: собрала 2 группы родителей по 20 человек, провела глубинные интервью и опросы по болям в образовании детей</li>
+          <li>Сформировала команду учителей на основе запросов родителей</li>
+          <li>MVP: запустила проект в Telegram, провела первый учебный год с минимальными затратами</li>
+          <li>Собрала фидбек от родителей и учителей по итогам года — на его основе спроектировала платформу с живыми уроками</li>
+          <li>Разработала AI-проверку домашних заданий: автоматическая обратная связь родителям, снижение нагрузки на учителей</li>
+          <li>Разработала AI-тьютора — персональный помощник ученика: мотивация, отслеживание прогресса, напоминания о дедлайнах</li>
+          <li>На основе маркетинговых исследований подростковой аудитории создала в Codex hero-секции страниц школьных предметов в стиле «антидизайн» + граффити</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="job-title">Владелец / Product Manager</div>
+        <div class="job-meta">
+          <span class="job-company">Онлайн-академия YogaVedi</span>
+          <span class="job-date">Апр. 2017 — Сент. 2025</span>
+        </div>
+        <ul class="job-ul">
+          <li>Разработала продуктовую матрицу: трёхмесячные модули, годовые программы, марафоны, клуб, интенсивы, а также крупнейший продукт в нише — 4-летний профессиональный курс</li>
+          <li>Внедрила аналитику проходимости курсов — выбрала и настроила инструмент, который дал видимость по ключевым точкам оттока студентов</li>
+          <li>Внедрила механики повышения completion rate: живые занятия с куратором, многократное прохождение тестов как элемент обучения, разбор кейсов студентов, возможность проходить курс с потоком 3 раза — completion rate вырос до 65–75% при среднем 40–70% по рынку</li>
+          <li>Регулярный сбор фидбека, итерационное улучшение продукта — ни одного публичного недовольного студента за весь период</li>
+          <li>Постановка задач разработчикам (ТЗ, схемы процессов, приёмка):
+            <ul class="job-ul" style="margin-top:8px">
+              <li>Модуль учёта рабочего времени МОПов — на основе логов действий в CRM, без ручных отчётов</li>
+              <li>Модуль кастомной интеграции с банком — снизил комиссию за эквайринг на 1,5–2%</li>
+              <li>Модуль интеграции с WhatsApp до выхода официального API: массовые рассылки со страницы сделок и индивидуальное общение из карточек сделок и контактов</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="job-title">Привлечённый эксперт по продукту</div>
+        <div class="job-meta">
+          <span class="job-company">Онлайн-школа «Здоровье волос»</span>
+          <span class="job-date">2022</span>
+        </div>
+        <ul class="job-ul">
+          <li>Разработала продуктовую матрицу для онлайн-школы</li>
+          <li>Провела серию консультаций по развитию продукта</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="job-title">Руководитель проекта</div>
+        <div class="job-meta">
+          <span class="job-company">Акселератор онлайн-школ Accel</span>
+          <span class="job-date">Март 2019 — Август 2019 · 6 месяцев</span>
+        </div>
+        <ul class="job-ul">
+          <li>Провела исследование рынка онлайн-образования в США: анализ конкурентов, воронок крупных американских маркетологов, опыта LMS-поставщиков</li>
+          <li>На основе анализа звонков менеджеров выявила проблему доверия — пересобрала команду продаж, что пробило стену недоверия у американских клиентов</li>
+          <li>Привлекла носителя языка к аудиту лендингов и писем — полная адаптация текстов под американскую аудиторию</li>
+          <li>Привлекла специалиста по лидогенерации с профильным опытом: стоимость лида стала ниже, чем на российском рынке</li>
+          <li>В результате проделанной работы за месяц стоимость лида уменьшила в 13 раз, увеличила конверсию в подписчика с 28% до 55%</li>
+          <li>Довела продукт до первой продажи на рынках США и Азии — при стоимости продукта свыше $1000</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- AI PROJECTS -->
+<section class="ai-section" id="ai">
+  <div class="container">
+    <div class="section-eyebrow">Экспертиза</div>
+    <h2 class="section-h">AI-проекты и эксперименты</h2>
+    <div class="ai-grid">
+      <div class="ai-card">
+        <div class="ai-card-icon">🧠</div>
+        <p>Vibe-coding с Claude, Codex, OpenCode — создание рабочих приложений через промпты без классической разработки</p>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-icon">🤖</div>
+        <p>Приложения для Битрикс24, разработанные с помощью AI-агентов: кастомные роботы/активити, менеджер открытых линий, интеграции с мессенджерами</p>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-icon">👶</div>
+        <p>AI-тьютор и автоматическая проверка домашних заданий по фото для детской онлайн-школы</p>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-icon">📨</div>
+        <p>Плагины управления подписками и рассылками через Telegram API и Max API; активити для автоматизации отправки сообщений</p>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-icon">⚡</div>
+        <p>Open-source skill для <a href="https://github.com/lucky-naty/bitrix24-vibecode" target="_blank">Bitrix Vibecode</a> — опубликован на GitHub</p>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-icon">🚀</div>
+        <p>Open-source skill Landing Page from File для агента <a href="https://github.com/lucky-naty/hermes-skills" target="_blank">Hermes</a> — опубликован на GitHub</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY ME -->
+<section id="motivation" style="padding: 60px 0; border-bottom: 1px solid rgba(255,255,255,0.07);">
+  <div class="container">
+    <div class="section-eyebrow">Мотивация</div>
+    <h2 class="section-h">Почему я должна быть в этом проекте</h2>
+    <div style="max-width: 720px; display: flex; flex-direction: column; gap: 20px;">
+      <p style="font-size: 16px; color: var(--text1); line-height: 1.8;">
+        Мои последние три позиции — направления, которых до меня не существовало. Я заходила туда, где не было ни дорожной карты, ни готовых ответов, и каждый раз доводила до измеримого результата. В акселераторе Accel я с минимальными командой и бюджетом, с высоким ценником продукта почти вывела российскую онлайн-школу на рынок США и Азии — довела до первой продажи. В YogaVedi выстраивала продукт с нуля: я была первой, кто внедрил практические вебинары с куратором, запустила клуб — вопреки сопротивлению. Эти решения дали мощный рост, который мы измерили в метриках, а потом их стали повторять конкуренты.
+      </p>
+      <p style="font-size: 16px; color: var(--blue-light); font-weight: 600; line-height: 1.8; border-left: 3px solid var(--blue-light); padding-left: 16px;">
+        Неопределённость — это не стресс для меня, это драйвовая среда. И из всего, чем я занималась, именно в продукте я показываю лучший результат: мне важно качество и чтобы клиент был доволен.
+      </p>
+      <p style="font-size: 16px; color: var(--text1); line-height: 1.8;">
+        Я сознательно выбрала Битрикс для следующей вехи в карьере и, чтобы по-настоящему понять его, я осознанно начала с технической поддержки — там, где видны все нюансы продукта и сотни реальных пользовательских болей изнутри. Именно поэтому я вижу то, что не всегда видно снаружи: огромный разрыв между возможностями платформы и тем, как пользователи этими возможностями реально пользуются. Это заметно даже на примере Vibecode — мощный инструмент, но пользователи спотыкаются при первых же шагах.
+      </p>
+      <p style="font-size: 16px; color: var(--blue-light); font-weight: 600; line-height: 1.8;">
+        Я уже внутри этого проекта и работаю на этот продукт, хотя меня ещё не наняли. 🙂
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-eyebrow">Компетенции</div>
+    <h2 class="section-h">Навыки</h2>
+    <div class="skills-cols">
+      <div>
+        <div class="skill-block-title">📈 Продуктовые</div>
+        <ul class="skill-list">
+          <li>Анализ метрик: retention, конверсия, CPL, ROMI</li>
+          <li>Custdev, сбор и структурирование фидбека</li>
+          <li>Vibe-coding: разработка приложений через Claude / Codex</li>
+          <li>Постановка задач разработке, приёмка</li>
+        </ul>
+      </div>
+      <div>
+        <div class="skill-block-title">⚙️ Технические</div>
+        <ul class="skill-list">
+          <li>Битрикс24: API, роботы, смарт-процессы, вебхуки</li>
+          <li>Claude / Codex — prompt engineering</li>
+          <li>AI-агенты, vibe-coding</li>
+          <li>Make, Zapier, интеграции через API</li>
+          <li>WordPress / LMS, AmoCRM, HubSpot, GetCourse</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="edu-section" id="education">
+  <div class="container">
+    <div class="section-eyebrow">Образование</div>
+    <h2 class="section-h">Обучение</h2>
+    <div class="edu-cols">
+      <div class="edu-block">
+        <div class="edu-block-title">🎓 Неоконченное высшее образование</div>
+        <div class="edu-item">
+          <strong>Харьковский национальный университет радиоэлектроники</strong>
+          Экономическая кибернетика, экономист-инженер · 2007
+        </div>
+        <div style="margin-top:16px; padding-top:14px; border-top:1px solid var(--border)">
+          <div class="edu-block-title" style="margin-bottom:8px">📚 Актуальные курсы (2025–2026)</div>
+          <ul class="cert-list">
+            <li>AI для менеджеров — cloud.ru (в процессе)</li>
+            <li>Custdev — Нетология</li>
+          </ul>
+        </div>
+      </div>
+      <div class="edu-block">
+        <div class="edu-block-title">🔷 Сертификаты Битрикс</div>
+        <ul class="cert-list">
+          <li>Битрикс24.CRM Основы</li>
+          <li>1С-Битрикс24 Интернет-магазин + CRM</li>
+          <li>CRM-маркетинг в Битрикс24</li>
+          <li>No-code в Битрикс24</li>
+          <li>Автоматизация бизнес-процессов</li>
+          <li>Автоматизация цифровых рабочих мест</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="cta-inner">
+      <h2>Готова к работе</h2>
+      <p>Удалённо / гибрид · Москва · Русский (родной) · Английский B2</p>
+      <div class="cta-btns">
+        <a href="tel:+79005727988" class="btn btn-blue">📞 Позвонить</a>
+<a href="https://t.me/shamaeva_online" class="btn btn-outline" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg> Telegram</a>
+        <a href="https://github.com/lucky-naty" class="btn btn-gh" target="_blank">⌥ GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Наталья Шамаева · Product Manager · AI · Битрикс24 · lucky-naty@yandex.ru
+</footer>
+
+<div class="copy-toast" id="toast">Скопировано ✓</div>
+
+<script>
+function copyText(e, text) {
+  e.preventDefault();
+  e.stopPropagation();
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = e.currentTarget;
+    btn.classList.add('copied');
+    setTimeout(() => btn.classList.remove('copied'), 1500);
+
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    clearTimeout(toast._t);
+    toast._t = setTimeout(() => toast.classList.remove('show'), 1800);
+  });
+}
+</script>
+</body>
+</html>
